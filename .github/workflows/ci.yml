@@ -1,0 +1,46 @@
+name: "Pradipta\'s Test Pipeline"
+
+on:
+  pull_request:
+    branches:
+      - 'develop'
+
+  push:
+    branches:
+      - 'develop'
+      - 'master'
+      - 'feature'
+      - 'sandbox'
+
+# env:
+#   ARTIFACTORY_BUCKET: "mro-devops-esp-artifacts"
+#   DEV_ARTIFACTORY_BUCKET: "mro-dev-esp-artifacts-8at6"
+#   ARTIFACT_DIRS: "conf dist shared workflows aws snowflake"
+#   PYTHON_ARCHITECTURE: "x64"
+#   POETRY_VERSION: "1.0.10"
+#   TARGET_DIR: "target"
+#   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+jobs:
+  get-commit-message:
+    runs-on: ubuntu-18.04
+
+    outputs:
+      commit-message: ${{ steps.cm.outputs.commit-message}}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Print
+        run: |
+          env | grep GITHUB
+          # commit_msg="${{ github.event.head_commit.message }}"
+          # echo "$commit_msg"
+          # cmdb_ref="cmdb-dev"
+          # if [[ $commit_msg == *'sandbox'* ]]; then
+          #     cmdb_ref="cmdb-sandbox"
+          # fi
+          # echo "$cmdb_ref"
