@@ -36,5 +36,5 @@ jobs:
       - name: Print
         run: |
           #env | grep GITHUB
-          pr_title="${{ github.event.push.message }}"
+          pr_title="${{ github.event.head_commit.message }}"
           echo "$pr_title"
