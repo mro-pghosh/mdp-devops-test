@@ -35,6 +35,6 @@ jobs:
 
       - name: Print
         run: |
-          env | grep GITHUB
+          #env | grep GITHUB
           pr_title="${{ github.event.pull_request.title }}"
           echo "$pr_title"
