@@ -1,4 +1,4 @@
-name: 'Pradipta's Test Pipeline'
+name: 'Pradipta Test Pipeline'
 
 on:
   pull_request:
