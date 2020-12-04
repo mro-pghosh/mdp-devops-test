@@ -10,7 +10,7 @@ on:
       - 'develop'
       - 'master'
       - 'feature'
-      - 'sandbox*'
+      - 'sandbox/*'
 
 # env:
 #   ARTIFACTORY_BUCKET: "mro-devops-esp-artifacts"
