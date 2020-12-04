@@ -32,35 +32,3 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-
-      - name: get commit message
-        id: cm
-        run: |
-          MSG=$(git log --format=%B -n 1 ${{ github.event.after }})
-          echo "::set-output name=commit-message::${MSG}"
-
-      - name: check commit message
-        if: ${{ github.event_name != 'pull_request' }}
-        run: |
-          MSG=$(git log --format=%B -n 1 ${{ github.event.after }})
-
-          if ! egrep "^(feat|fix|hotfix|chore)\(.+\): .+(, AB#[0-9]+)*((,)?\s+\(#[0-9]+\))?$" <<< "$MSG"
-          then
-            echo "Error: wrong comment formate."
-            echo "Comment should be: <(feat|fix|hotfix|chore)>(<subsystem>): <description>, AB#<task id> [(#<pr_number>)]"
-            echo "This message: $MSG"
-            exit 255
-          fi
-
-      - name: check pr title
-        if: ${{ github.event_name == 'pull_request' }}
-        run: |
-          pr_title="${{ github.event.pull_request.title }}"
-
-          if ! egrep "^(feat|fix|hotfix|chore)\(.+\): .+, AB#[0-9]+((,)?\s+\(#[0-9]+\))?$" <<< "$pr_title"
-          then
-            echo "Error: wrong PR title format"
-            echo "Title should be: <(feat|fix|hotfix|chore)>(<subsystem>): <description>, AB#<task id> [(#<pr_number>)]"
-            exit 255
-          fi
-
