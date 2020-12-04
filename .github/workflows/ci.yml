@@ -36,10 +36,10 @@ jobs:
       - name: Print
         run: |
           #env | grep GITHUB
-          pr_title="${{ github.event.head_commit.message }}"
-          echo "$pr_title"
+          commit_msg="${{ github.event.head_commit.message }}"
+          echo "$commit_msg"
           cmdb_ref="cmdb-dev"
-          if [[ $pr_title == *'sandbox'* ]]; then
+          if [[ $commit_msg == *'sandbox'* ]]; then
               cmdb_ref="cmdb-sandbox"
           fi
           echo "$cmdb_ref"
