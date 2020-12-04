@@ -1,15 +1,15 @@
 name: "Pradipta\'s Test Pipeline"
 
 on:
-  pull_request:
-    branches:
-      - 'develop'
+  # pull_request:
+  #   branches:
+  #     - 'develop'
 
   push:
     branches:
       - 'develop'
       - 'master'
-#      - 'feature'
+      - 'feature'
 
 # env:
 #   ARTIFACTORY_BUCKET: "mro-devops-esp-artifacts"
@@ -36,5 +36,5 @@ jobs:
       - name: Print
         run: |
           #env | grep GITHUB
-          pr_title="${{ github.event.pull_request.title }}"
+          pr_title="${{ github.event.push.title }}"
           echo "$pr_title"
