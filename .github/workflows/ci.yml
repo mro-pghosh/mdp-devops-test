@@ -9,7 +9,7 @@ on:
     branches:
       - 'develop'
       - 'master'
-      - 'release-*'
+      - 'feature'
 
 # env:
 #   ARTIFACTORY_BUCKET: "mro-devops-esp-artifacts"
