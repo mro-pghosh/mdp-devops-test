@@ -35,4 +35,4 @@ jobs:
 
       - name: Print
         run: |
-          echo "$env"
+          env
