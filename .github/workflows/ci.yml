@@ -35,4 +35,4 @@ jobs:
 
       - name: Print
         run: |
-          env
+          env | grep GITHUB
