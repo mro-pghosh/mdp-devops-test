@@ -38,3 +38,8 @@ jobs:
           #env | grep GITHUB
           pr_title="${{ github.event.head_commit.message }}"
           echo "$pr_title"
+          cmdb_ref="cmdb-dev"
+          if [[ $pr_title == *'sandbox'* ]]; then
+              cmdb_ref="cmdb-sandbox"
+          fi
+          echo "$cmdb_ref"
