@@ -1,16 +1,16 @@
 name: "Pradipta\'s Test Pipeline"
 
 on:
-  # pull_request:
-  #   branches:
-  #     - 'develop'
+  pull_request:
+    branches:
+      - 'develop'
 
   push:
     branches:
       - 'develop'
       - 'master'
       - 'feature'
-      - "sandbox*"
+      - 'sandbox'
 
 # env:
 #   ARTIFACTORY_BUCKET: "mro-devops-esp-artifacts"
