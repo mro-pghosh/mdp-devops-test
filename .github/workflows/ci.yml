@@ -35,4 +35,4 @@ jobs:
 
       - name: Print
         run: |
-          echo "hello world"
+          echo "$env"
